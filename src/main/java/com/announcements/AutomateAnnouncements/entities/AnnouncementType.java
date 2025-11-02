@@ -1,4 +1,4 @@
-package com.anuncios.AutomatAununcios.entities;
+package com.announcements.AutomateAnnouncements.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,12 +8,8 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Usuario {
-
+public class AnnouncementType {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    private String correo;
-    private String contrasenia; 
-   
 }
