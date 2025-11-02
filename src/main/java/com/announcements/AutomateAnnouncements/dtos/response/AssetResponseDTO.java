@@ -1,10 +1,10 @@
-package com.announcements.AutomateAnnouncements.dtos;
+package com.announcements.AutomateAnnouncements.dtos.response;
 
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class AssetDTO {
+public class AssetResponseDTO {
     private Integer id;
     private Integer owner;
     private String type;

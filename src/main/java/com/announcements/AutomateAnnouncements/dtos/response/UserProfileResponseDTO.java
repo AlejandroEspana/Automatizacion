@@ -1,10 +1,10 @@
-package com.announcements.AutomateAnnouncements.dtos;
+package com.announcements.AutomateAnnouncements.dtos.response;
 
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class UserProfileDTO {
+public class UserProfileResponseDTO {
     private Integer id;
     private String email;
     private String displayName;

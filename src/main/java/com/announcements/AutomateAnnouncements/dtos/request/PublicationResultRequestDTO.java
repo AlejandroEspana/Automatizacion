@@ -1,10 +1,9 @@
-package com.announcements.AutomateAnnouncements.dtos;
+package com.announcements.AutomateAnnouncements.dtos.request;
 
 import lombok.Data;
 
 @Data
-public class PublicationResultDTO {
-    private Integer id;
+public class PublicationResultRequestDTO {
     private String network;
     private String status;
     private String url;

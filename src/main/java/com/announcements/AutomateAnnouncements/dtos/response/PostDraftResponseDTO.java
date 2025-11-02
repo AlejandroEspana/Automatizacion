@@ -1,10 +1,10 @@
-package com.announcements.AutomateAnnouncements.dtos;
+package com.announcements.AutomateAnnouncements.dtos.response;
 
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class PostDraftDTO {
+public class PostDraftResponseDTO {
     private Integer id;
     private String title;
     private String description;

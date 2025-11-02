@@ -1,10 +1,10 @@
-package com.announcements.AutomateAnnouncements.dtos;
+package com.announcements.AutomateAnnouncements.dtos.response;
 
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class PublicationJobDTO {
+public class PublicationJobResponseDTO {
     private Integer id;
     private Integer postDraftId;
     private String status;
