@@ -1,10 +1,10 @@
-package com.anuncios.AutomatAununcios.dtos;
+package com.announcements.AutomateAnnouncements.dtos;
 
 import lombok.Data;
 
 @Data
-public class UsuarioResponseDTO {
+public class UserResponseDTO {
     private Integer id;
-    private String correo;
-    private String contrasenia;
+    private String email;
+    private String password;
 }

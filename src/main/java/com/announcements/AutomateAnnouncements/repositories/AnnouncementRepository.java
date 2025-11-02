@@ -1,11 +1,11 @@
-package com.anuncios.AutomatAununcios.repositories;
+package com.announcements.AutomateAnnouncements.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.anuncios.AutomatAununcios.entities.Anuncios;
+import com.announcements.AutomateAnnouncements.entities.Announcement;
 
 @Repository
-public interface AnunciosRepositories extends JpaRepository<Anuncios, Integer>{
+public interface AnnouncementRepository extends JpaRepository<Announcement, Integer>{
     
 }

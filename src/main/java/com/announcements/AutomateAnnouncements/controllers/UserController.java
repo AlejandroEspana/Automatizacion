@@ -1,4 +1,4 @@
-package com.anuncios.AutomatAununcios.controllers;
+package com.announcements.AutomateAnnouncements.controllers;
 
 import java.util.List;
 
@@ -10,31 +10,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.anuncios.AutomatAununcios.dtos.UsuarioRequestDTO;
-import com.anuncios.AutomatAununcios.dtos.UsuarioResponseDTO;
-import com.anuncios.AutomatAununcios.services.UsuarioService;
+import com.announcements.AutomateAnnouncements.dtos.UserRequestDTO;
+import com.announcements.AutomateAnnouncements.dtos.UserResponseDTO;
+import com.announcements.AutomateAnnouncements.services.UserService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/usuarios")
-public class UsuarioController {
+@RequestMapping("/api/users")
+public class UserController {
 
-    private final UsuarioService usuarioService;
-    public UsuarioController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
+    private final UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @PostMapping
-    public ResponseEntity<UsuarioResponseDTO> crearUsuario(@Valid @RequestBody UsuarioRequestDTO usuarioRequestDTO){
-        UsuarioResponseDTO nuevoUsuario = usuarioService.crearUsuario(usuarioRequestDTO);
-        return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED);
+    public ResponseEntity<UserResponseDTO> createUser(@Valid @RequestBody UserRequestDTO userRequestDTO){
+        UserResponseDTO newUser = userService.createUser(userRequestDTO);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<UsuarioResponseDTO>> ObtenerUsuario(){
-        List<UsuarioResponseDTO> usuario = usuarioService.listarUsuarios();
-        return ResponseEntity.ok(usuario);
+    public ResponseEntity<List<UserResponseDTO>> getUsers(){
+        List<UserResponseDTO> users = userService.listUsers();
+        return ResponseEntity.ok(users);
     }
     
 }

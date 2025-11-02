@@ -1,4 +1,4 @@
-package com.anuncios.AutomatAununcios.entities;
+package com.announcements.AutomateAnnouncements.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,12 +8,12 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Anuncios {
+public class Announcement {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    private String titulo;
-    private String descripcion;
-    private String urlVideo;
+    private String title;
+    private String description;
+    private String videoUrl;
 }

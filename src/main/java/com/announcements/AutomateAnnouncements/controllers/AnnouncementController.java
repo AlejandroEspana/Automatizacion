@@ -1,14 +1,14 @@
-package com.anuncios.AutomatAununcios.controllers;
+package com.announcements.AutomateAnnouncements.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/Anuncios")
-public class AnuncioController {
-    @GetMapping("/anuncios")
-    public String decirHola(){
-        return "anuncios";
+@RequestMapping("/api/announcements")
+public class AnnouncementController {
+    @GetMapping("/announcements")
+    public String sayHello(){
+        return "announcements";
     }
 }

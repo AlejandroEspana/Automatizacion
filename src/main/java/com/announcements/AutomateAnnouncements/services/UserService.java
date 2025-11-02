@@ -1,43 +1,43 @@
-package com.anuncios.AutomatAununcios.services;
+package com.announcements.AutomateAnnouncements.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.anuncios.AutomatAununcios.dtos.UsuarioRequestDTO;
-import com.anuncios.AutomatAununcios.dtos.UsuarioResponseDTO;
-import com.anuncios.AutomatAununcios.entities.Usuario;
-import com.anuncios.AutomatAununcios.repositories.UsuarioRepositories;
+import com.announcements.AutomateAnnouncements.dtos.UserRequestDTO;
+import com.announcements.AutomateAnnouncements.dtos.UserResponseDTO;
+import com.announcements.AutomateAnnouncements.entities.User;
+import com.announcements.AutomateAnnouncements.repositories.UserRepository;
 
 @Service
-public class UsuarioService {
-    private final UsuarioRepositories usuarioRepositories;
+public class UserService {
+    private final UserRepository userRepository;
 
-    public UsuarioService(UsuarioRepositories usuarioRepositories) {
-        this.usuarioRepositories = usuarioRepositories;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public UsuarioResponseDTO crearUsuario(UsuarioRequestDTO usuarioRequestDTO){
-        Usuario usuario = new Usuario();
-        usuario.setCorreo(usuarioRequestDTO.getCorreo());
-        usuario.setContrasenia(usuarioRequestDTO.getContrasenia());
-        Usuario usuarioGuardado = usuarioRepositories.save(usuario);
+    public UserResponseDTO createUser(UserRequestDTO userRequestDTO){
+        User user = new User();
+        user.setEmail(userRequestDTO.getEmail());
+        user.setPassword(userRequestDTO.getPassword());
+        User savedUser = userRepository.save(user);
 
-        return convertirDTO(usuarioGuardado);
+        return convertToDTO(savedUser);
     }
 
-    public List<UsuarioResponseDTO> listarUsuarios(){
-        List<Usuario> usuarios = usuarioRepositories.findAll();
-        return usuarios.stream().map(this::convertirDTO).collect(Collectors.toList());
+    public List<UserResponseDTO> listUsers(){
+        List<User> users = userRepository.findAll();
+        return users.stream().map(this::convertToDTO).collect(Collectors.toList());
 
     }
 
-    private UsuarioResponseDTO convertirDTO(Usuario usuario){
-        UsuarioResponseDTO dto = new UsuarioResponseDTO();
-        dto.setId(usuario.getId());
-        dto.setCorreo(usuario.getCorreo());
-        dto.setContrasenia(usuario.getContrasenia());
+    private UserResponseDTO convertToDTO(User user){
+        UserResponseDTO dto = new UserResponseDTO();
+        dto.setId(user.getId());
+        dto.setEmail(user.getEmail());
+        dto.setPassword(user.getPassword());
         return dto;
     }
 

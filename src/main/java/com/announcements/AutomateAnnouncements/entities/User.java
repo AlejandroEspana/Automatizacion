@@ -1,4 +1,4 @@
-package com.anuncios.AutomatAununcios.entities;
+package com.announcements.AutomateAnnouncements.entities;
 
 import java.util.List;
 
@@ -8,18 +8,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
+@Table(name = "`user`")
 @Data
-public class Usuario {
+public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
-    private String correo;
-    private String contrasenia; 
+    private String email;
+    private String password; 
 
-    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL)
-    private List<RedesSociales> redesSociales;
+    @OneToMany(mappedBy= "user", cascade = CascadeType.ALL)
+    private List<SocialNetwork> socialNetworks;
 }
 

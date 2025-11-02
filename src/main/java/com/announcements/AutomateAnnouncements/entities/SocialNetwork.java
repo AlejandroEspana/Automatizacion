@@ -1,4 +1,4 @@
-package com.anuncios.AutomatAununcios.entities;
+package com.announcements.AutomateAnnouncements.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,15 +10,16 @@ import lombok.Data;
 
 @Entity
 @Data
-public class RedesSociales {
+public class SocialNetwork {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    private String credencialesTiktok;
-    private String credencialesInstagram;
-    private String credencialesYoutube;
+    private String tiktokCredentials;
+    private String instagramCredentials;
+    private String youtubeCredentials;
+    
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    @JoinColumn(name = "user_id")
+    private User user;
 }
