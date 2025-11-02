@@ -3,9 +3,8 @@ package com.announcements.AutomateAnnouncements.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.announcements.AutomateAnnouncements.entities.AnnouncementType;
+import com.announcements.AutomateAnnouncements.entities.PublicationResult;
 
 @Repository
-public interface AnnouncementTypeRepository extends JpaRepository<AnnouncementType, Integer> {
-    
+public interface PublicationResultRepository extends JpaRepository<PublicationResult, Integer> {
 }
