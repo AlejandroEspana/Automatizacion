@@ -1,41 +1,51 @@
 package com.announcements.AutomateAnnouncements.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-import com.announcements.AutomateAnnouncements.entities.PublicationJob;
-import com.announcements.AutomateAnnouncements.repositories.PublicationJobRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.announcements.AutomateAnnouncements.dtos.request.PublicationJobRequestDTO;
+import com.announcements.AutomateAnnouncements.dtos.response.PublicationJobResponseDTO;
+import com.announcements.AutomateAnnouncements.services.PublicationJobService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/publication-jobs")
 public class PublicationJobController {
 
     @Autowired
-    private PublicationJobRepository publicationJobRepository;
+    private PublicationJobService publicationJobService;
 
     @GetMapping
-    public List<PublicationJob> getAllPublicationJobs() {
-        return publicationJobRepository.findAll();
+    public List<PublicationJobResponseDTO> getAllPublicationJobs() {
+        return publicationJobService.getAll();
     }
 
     @PostMapping
-    public PublicationJob createPublicationJob(@RequestBody PublicationJob publicationJob) {
-        return publicationJobRepository.save(publicationJob);
+    public ResponseEntity<PublicationJobResponseDTO> createPublicationJob(@RequestBody @Valid PublicationJobRequestDTO dto) {
+        PublicationJobResponseDTO created = publicationJobService.create(dto);
+        return ResponseEntity.status(201).body(created);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PublicationJob> getPublicationJobById(@PathVariable Integer id) {
-        return publicationJobRepository.findById(id)
+    public ResponseEntity<PublicationJobResponseDTO> getPublicationJobById(@PathVariable Integer id) {
+        return publicationJobService.getById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePublicationJob(@PathVariable Integer id) {
-        if (publicationJobRepository.existsById(id)) {
-            publicationJobRepository.deleteById(id);
+        if (publicationJobService.delete(id)) {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
